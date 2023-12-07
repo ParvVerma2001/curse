@@ -433,20 +433,20 @@ document.getElementById('sell-curse').addEventListener('click', async () => {
         flashNotification('Wallet not Connected', 'red');
         return;
     }
-
 	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 	const userAddress = accounts[0];
 	popup.style.display = "flex";
 	const amountCurse = document.getElementById('curse-swap-amount').value;
-	
+
     try {
+        const amountWei = web3.utils.toWei(amountCurse, 'ether');
         const gas = 5000000;
-        const transaction = await contract.methods.sellTokens(amountCurse).send({ from: userAddress, gas });
+        const transaction = await contract.methods.sellTokens(amountWei).send({ from: userAddress, gas });
 
 	if (transaction.status) {
 	        document.getElementById('popup-status').textContent = 'Transaction Successful';
 		document.getElementById('popup-message').textContent = `✅ Swap Sucessfully`;
-	updateLog(userAddress, '✅ Sell Curse '+amountCurse);
+	updateLog(userAddress, '✅ Sell Curse '+amountCurse );
 	}
     } catch (error) {
         document.getElementById('popup-status').textContent = 'Transaction Failed';
