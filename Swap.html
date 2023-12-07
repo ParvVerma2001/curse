@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap - Abandoned Curse</title>
+    <link rel="icon" type="image/x-icon" href="Kappa.png">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="footer.css">
+    <link rel="stylesheet" type="text/css" href="BG.css">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+<style>
+	.swap-container{
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	    margin-left:auto;
+	    margin-right:auto;
+            background-color: #333;
+            width: 600px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px;
+   	    font-weight:bold;	
+            padding:30px;	
+	}
+
+#curse-swap-container, .sell-criteria {
+display:none;
+
+}
+
+	.balance-container, .sell-criteria{
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	    margin-left:auto;
+	    margin-right:auto;
+            background-color: #333;
+            width: 600px;
+            height: 150px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px;
+   	    font-weight:bold;	
+            padding:10px;
+	border-spacing:5px;
+
+	}
+
+	#balance-amount {
+	font-size:20px
+	
+	}
+
+	.swap-pair {
+		border-radius: 20px;
+            padding:15px;
+            background-color: #F50870FF;
+		cursor: pointer;
+	}
+
+	#curse-bnb {
+           background-color: grey;
+	}
+
+	td{
+		align-items:center;
+	}
+
+	#t-coin{
+		text-align: center;
+		vertical-align: middle;
+		width:20%;
+	}
+
+	#coin-logo{
+            max-width: 30%;
+            border-radius: 20px;
+	}
+
+	#t-arrow{
+		max-width: 8%;
+		border-radius: 100%;
+	}
+
+	#bnb-swap-amount, #coin-swap-amount, #curse-swap-amount, #bep-swap-amount{
+		width:90%;
+		height:50px;
+		border-radius:20px;
+		font-weight:bold;
+		font-size:16px;
+	}
+
+	#bnb-swap-amount::placeholder, #coin-swap-amount::placeholder {
+		color: #999;
+		font-style: italic;
+	}
+
+	#buy-curse, #sell-curse{
+		background-color: #F50870FF;
+		color: #fff;
+		border: none;
+		border-radius: 15px;
+		padding: 1% 2%;
+		font-size:140%;
+		cursor: pointer;
+		font-weight:bold;
+		width:190px;
+		height:50px;
+	}
+
+	#notification {
+		font-size: 20px;
+		font-weight: bold;
+		padding: 10px;
+		color: white;
+		background-color: #333;
+		width: 50%;
+		margin: 10px auto;
+		border-radius: 10px;
+		position: relative;
+		text-align: center;
+	}
+
+        @media only screen and (max-width: 850px)
+	{
+	.balance-container, .sell-criteria{
+            width: 80%;
+	}
+
+	.swap-container{
+            width: 80%;
+	}
+
+	#coin-logo{
+            max-width: 30%;
+		border-radius: 100%;
+	}
+
+	#t-coin{
+		width:30%;
+	}
+
+	#t-arrow{
+		max-width: 15%;
+	}
+
+}
+
+</style>
+</head>
+<body>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-popup">X</span>
+            <p class="status" id="popup-status">Processing Transaction</p>
+            <p id="popup-message">Please wait while the transaction is being processed...</p>
+        </div>
+    </div>
+
+  <div class="background-container">
+    <div class="dark-overlay"><img src="kappa.jpg" class="background-image"></div>
+  </div>
+
+    <header>
+	<img src="kappa.png" align="left" class="logo"></a>
+        <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
+        <nav>
+            <a href="\">Home</a>
+            <a href="Swap.html">Swap</a>
+            <a href="Airdrop.html">Airdrop</a>
+           <!-- <a href="#">NFT</a> -->
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact us</a>
+            <a href="Tokenomics.html">Tokenomics</a>
+        </nav>
+        <button id="connect-wallet"><b>Connect Wallet</b></button>
+        <button id="disconnect-wallet" style="display: none;"><b>Disconnect Wallet</b></button>
+    </header>
+
+<br>
+<div id="notification" style="background-color: transparent;"></div>
+
+<br>
+<table class="balance-container">    
+<tr>
+	<td id="t-coin"><image src="bnb.png" id="coin-logo">&nbspBNB</td>
+	<td><span class="balance-amount" id="bnb-bal">00</span></td>
+	<td id="t-coin"><image src="kappa.png" id="coin-logo">&nbspCURSE</td>
+	<td><span class="balance-amount" id="curse-bal">00</span></td>
+<tr>
+<tr>
+	<td colspan=4></td>
+<tr>
+<tr>
+	<td colspan=2 id="bnb-curse" class="swap-pair">BNB/CURSE</td>
+	<td colspan=2 id="curse-bnb" class="swap-pair">CURSE/BNB</td>
+<tr>
+</table>
+
+<br>
+<table class="sell-criteria" id="sell-criteria">    
+<tr>
+	<td colspan=2>Sell Criteria</td>
+<tr>
+<tr>
+	<td>Hold : </td>
+	<td><span id="curse-bal-criteria">0</span> / 50 CURSE</td>
+<tr>
+<tr>
+	<td>Refer : </td>
+	<td><span id="refer">0</span> / 2</td>
+
+<tr>
+</table>
+
+<br>
+<table class="swap-container" id="bnb-swap-container">    
+<tr>
+	
+	<td colspan=2style="padding-bottom:50px;"><h2>Swap<h2></td>
+	
+</tr>
+
+<tr>
+	<td id="t-coin"><image src="bnb.png" id="coin-logo">&nbspBNB</td>
+	<td><input type="number" name="BNB"  id="bnb-swap-amount"></td>
+</tr>
+<tr>
+	<td colspan=2 style="padding:10px;"><image src="https://i.pinimg.com/564x/2c/10/f3/2c10f3080ca76440528c12f938823d98.jpg" id="t-arrow"></td>
+</tr>
+<tr>
+	<td id="t-coin"><image src="kappa.png" id="coin-logo">&nbspCURSE</td>
+	<td><input type="number" name="CURSE"  id="coin-swap-amount" readonly></td>
+</tr>
+<tr>
+	<td colspan=2 style="padding-top:50px;"><button id="buy-curse">Swap</button></td>
+</tr>
+
+</table>
+
+
+
+
+
+<table class="swap-container" id="curse-swap-container">    
+<tr>
+	
+	<td colspan=2style="padding-bottom:50px;"><h2>Swap<h2></td>
+	
+</tr>
+
+<tr>
+	<td id="t-coin"><image src="kappa.png" id="coin-logo">&nbspCURSE</td>
+	<td><input type="number" name="CURSE"  id="curse-swap-amount"></td>
+</tr>
+<tr>
+	<td colspan=2 style="padding:10px;"><image src="https://i.pinimg.com/564x/2c/10/f3/2c10f3080ca76440528c12f938823d98.jpg" id="t-arrow"></td>
+</tr>
+<tr>
+	<td id="t-coin"><image src="bnb.png" id="coin-logo">&nbspBNB</td>
+	<td><input type="number" name="BNB"  id="bep-swap-amount" readonly></td>
+</tr>
+<tr>
+	<td colspan=2 style="padding-top:50px;"><button id="sell-curse">Swap</button></td>
+</tr>
+
+</table>
+
+
+
+
+
+<br>
+<br>
+
+    <footer>
+<table id="t4">
+<tr>
+	<td id="td4-1"><img class="bottom-logo" src="kappa.png"></td>
+	<td>Token Price: $1.32</td>
+</tr>
+<tr>
+	<td id="td4-2"><img class="bottom-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png" style="width:50px;"></td>
+	<td><button id="Metamask-button" onclick="addTokenToMetamask()"><b>Add to Metamask</b></button></td>
+</tr>
+</table>
+
+           </b>
+        </div>
+
+        <div class="right-section"><b>
+<ul>
+    <li>        <a class="page-link" href="\">Home</a>
+    <li>        <a class="page-link" href="Swap.html">Swap</a>
+    <li>        <a class="page-link" href="Airdrop.html">Airdrop</a>
+    <li>        <a class="page-link" href="About.html">About</a>
+    <li>        <a class="page-link" href="Contact.html">Contact</a> 
+    <li>        <a class="page-link" href="Tokenomics.html">Tokenomics</a>
+</ul>
+        </div></b>
+    </footer>
+	
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script src="walletconnect.js"></script>
+<script src="log.js"></script>
+<script>
+//------Pop Up------------------
+        document.getElementById('close-popup').addEventListener('click', () => {
+            document.getElementById('popup').style.display = 'none';
+        document.getElementById('popup-status').textContent = 'Processing Transaction';
+        document.getElementById('popup-message').textContent = 'Please wait while the transaction is being processed...';
+        });
+</script>
+<script>
+
+
+function toggleMenu() {
+            var nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        }
+
+document.getElementById('connect-wallet').addEventListener('click', async () => {
+
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+	const userAddress = accounts[0];
+
+    try {
+        const networkId = await ethereum.request({ method: 'net_version' });
+
+        if (networkId === '56' || networkId === '97') {
+            const walletAddress = accounts[0];
+
+	walletConnected = true;
+	document.getElementById('disconnect-wallet').style.display = 'inline';
+	document.getElementById('connect-wallet').style.display = 'none';
+	
+	LoadBalance();
+	updateLog(userAddress, 'Swap Page Connect');
+        } else {
+	        flashNotification('Error: Connect to Binance Smart Chain', 'red'); }
+	} catch (error) {
+        flashNotification('Error connecting wallet', 'red');
+	}
+});
+
+document.getElementById('disconnect-wallet').addEventListener('click', () => {
+    ethereum.send('eth_requestAccounts').then(() => {
+        walletConnected = false;
+        document.getElementById('connect-wallet').style.display = 'inline';
+        document.getElementById('disconnect-wallet').style.display = 'none';
+
+        if (ethereum && ethereum.disconnect) {
+            ethereum.disconnect();
+        }
+    });
+});
+
+function flashNotification(message, color) {
+            const notification = document.getElementById('notification');
+            notification.style.backgroundColor = color;
+            notification.textContent = message;
+            setTimeout(() => {
+                notification.style.backgroundColor = 'transparent';
+                notification.textContent = '';
+            }, 3000);
+        }
+
+
+	let bnbamountInput = document.getElementById('bnb-swap-amount');
+	bnbamountInput.addEventListener('input', calculateCurseAmount);
+	
+
+async function calculateCurseAmount() {
+    const bnbPrice = 250;
+    const amount = parseFloat(bnbamountInput.value);
+
+    if (bnbPrice !== null) {
+        document.getElementById("coin-swap-amount").value = amount * bnbPrice;
+    } else {
+        document.getElementById("coin-swap-amount").value = 'Failed to fetch BNB price. Please try again later.';
+    }
+}
+
+	let curseamountInput = document.getElementById('curse-swap-amount');
+	curseamountInput.addEventListener('input', calculateBNBAmount);
+	
+
+async function calculateBNBAmount() {
+    const bnbPrice = 250;
+    const amount = parseFloat(curseamountInput.value);
+
+    if (bnbPrice !== null) {
+        document.getElementById("bep-swap-amount").value = amount / bnbPrice;
+    } else {
+        document.getElementById("bep-swap-amount").value = 'Failed to fetch BNB price. Please try again later.';
+    }
+}
+
+
+document.getElementById('buy-curse').addEventListener('click', async () => {
+    if (!walletConnected) {
+        flashNotification('Wallet not Connected', 'red');
+        return;
+    }
+
+	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+	const userAddress = accounts[0];
+	popup.style.display = "flex";
+	const amountBNB = document.getElementById('bnb-swap-amount').value;
+
+    try {
+        const amountWei = web3.utils.toWei(amountBNB, 'ether');
+        const gas = 5000000;
+        const transaction = await contract.methods.buyTokens().send({ from: userAddress, value: amountWei, gas });
+
+	if (transaction.status) {
+	        document.getElementById('popup-status').textContent = 'Transaction Successful';
+		document.getElementById('popup-message').textContent = `✅ Swap Sucessfully`;
+	updateLog(userAddress, '✅ Buy Curse '+amountBNB );
+	}
+    } catch (error) {
+        document.getElementById('popup-status').textContent = 'Transaction Failed';
+	document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
+	updateLog(userAddress, '❌ Error: Buy Curse '+amountBNB + ' '+ error.message);
+    }
+});
+
+
+document.getElementById('sell-curse').addEventListener('click', async () => {
+    if (!walletConnected) {
+        flashNotification('Wallet not Connected', 'red');
+        return;
+    }
+
+	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+	const userAddress = accounts[0];
+	popup.style.display = "flex";
+	const amountBNB = document.getElementById('bnb-swap-amount').value;
+
+    try {
+        const amountWei = web3.utils.toWei(amountBNB, 'ether');
+        const gas = 5000000;
+        const transaction = await contract.methods.sellTokens(amountWei).send({ from: userAddress, gas });
+
+	if (transaction.status) {
+	        document.getElementById('popup-status').textContent = 'Transaction Successful';
+		document.getElementById('popup-message').textContent = `✅ Swap Sucessfully`;
+	updateLog(userAddress, '✅ Sell Curse '+amountBNB );
+	}
+    } catch (error) {
+        document.getElementById('popup-status').textContent = 'Transaction Failed';
+	document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
+	updateLog(userAddress, '❌ Error: Sell Curse '+amountBNB + ' '+ error.message);
+    }
+});
+
+
+async function LoadBalance() {
+
+	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+	const userAddress = accounts[0];
+
+          const balance = await web3.eth.getBalance(userAddress);
+          const formattedBalance = web3.utils.fromWei(balance, 'ether');
+
+document.getElementById('bnb-bal').innerText = formattedBalance;
+
+const Curse_Bal = await contract.methods.balanceOf(userAddress).call();
+document.getElementById('curse-bal').innerText = web3.utils.fromWei(Curse_Bal, 'ether');
+document.getElementById('curse-bal-criteria').innerText = web3.utils.fromWei(Curse_Bal, 'ether');
+
+const Total_Refer = await contract.methods.getTotalReferrals(userAddress).call();
+const formattedRefer = web3.utils.fromWei(Total_Refer, 'ether')
+document.getElementById('refer').innerText = formattedRefer;
+
+
+}
+
+
+document.getElementById('bnb-curse').addEventListener('click', (event) => {
+  var curseSwapContainer = document.getElementById('curse-swap-container');
+  var bnbSwapContainer = document.getElementById('bnb-swap-container');
+  var SellCriteria = document.getElementById('sell-criteria');
+
+    SellCriteria.style.display = 'none';
+    curseSwapContainer.style.display = 'none';
+    bnbSwapContainer.style.display = 'table';
+    document.getElementById('bnb-curse').style.backgroundColor = '#F50870FF';
+    document.getElementById('curse-bnb').style.backgroundColor = 'grey';
+
+
+
+});
+
+document.getElementById('curse-bnb').addEventListener('click', (event) => {
+  var curseSwapContainer = document.getElementById('curse-swap-container');
+  var bnbSwapContainer = document.getElementById('bnb-swap-container');
+  var SellCriteria = document.getElementById('sell-criteria');
+
+
+    SellCriteria.style.display = 'table';
+    curseSwapContainer.style.display = 'table';
+    bnbSwapContainer.style.display = 'none';
+    document.getElementById('curse-bnb').style.backgroundColor = '#F50870FF';
+    document.getElementById('bnb-curse').style.backgroundColor = 'grey';
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+        footer {
+		overflow: auto;
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+        }
+
+	#t4{
+		padding:10px;
+		background-color: black;
+		border-radius: 20px;
+		font-color:white;
+		font-weight:bold;
+		width:250px;
+		height:140px;
+		text-align:center;
+	}
+
+	#td4-1, #td4-2{
+		width:50px;
+		height:40px;
+
+	}
+
+        #Metamask-button {
+		padding: 10px;
+		background-color: #F50870FF;
+		color: #fff;
+		border: none;
+		border-radius: 15px;
+		cursor: pointer;
+		font-size:80%;
+		width:90%;
+        }
+
+
+	.bottom-logo
+	{
+            max-width: 90%;
+            border-radius: 30px;
+	}
+
+        .right-section {
+		display: flex;
+		gap: 20px;
+		width:50%;
+		display: flex; 
+		align-items: right; 
+		justify-content: right;
+		text-align: right;
+        }
+
+        .page-link {
+            color: #fff;
+            text-decoration: none;
+        }
+	
+	ul
+	{
+		list-style-type: none;
+	}
+        
+	
+	@media only screen and (max-width: 850px) {
+
+        .claim-button {
+		width:70%;
+        }
+
+        .right-section {
+		width:40%;
+
+        }
+
+}

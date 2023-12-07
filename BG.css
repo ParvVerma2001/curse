@@ -1,0 +1,31 @@
+   .background-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dark-overlay {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dark-overlay::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+    }

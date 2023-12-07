@@ -1,0 +1,104 @@
+	body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            gap: 20px;
+        }
+
+        .logo {
+            max-width: 6%;
+            border-radius: 20px;
+        }
+
+        .menu-btn {
+            display: none; 
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+	    font-weight:bold;
+	    font-size:140%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        #connect-wallet,#disconnect-wallet {
+            background-color: #F50870FF;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            padding: 1% 2%;
+            font-size:140%;
+            cursor: pointer;
+        }
+
+	#disconnect-wallet {
+           background-color: grey;
+	}
+
+	#notification {
+		font-size: 20px;
+		font-weight: bold;
+		padding: 10px;
+		color: white;
+		background-color: #333;
+		width: 50%;
+		margin: 10px auto;
+		border-radius: 10px;
+		position: relative;
+		text-align: center;
+	}
+
+
+        @media only screen and (max-width: 850px) {
+	
+        .logo {
+            max-width: 15%;
+            border-radius: 10px;
+        }
+
+            .menu-btn {
+		display: block; 
+		border: 3px solid white;
+		border-radius: 15px;
+		padding: 1% 2%;
+		font-size:200%;
+		cursor: pointer;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                z-index: 1;
+		text-align: center;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+        #connect-wallet,#disconnect-wallet {
+
+            padding: 2% 4%;
+            font-size: 120%;
+            cursor: pointer;
+        }
+
+}

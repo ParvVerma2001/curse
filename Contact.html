@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Abandoned Curse</title>
+    <link rel="icon" type="image/x-icon" href="Kappa.png">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="footer.css">
+    <link rel="stylesheet" type="text/css" href="BG.css">
+<style>
+        body {
+		text-align: center;
+        }
+
+        .page {
+            cursor: pointer;
+        }
+
+	.main{
+		flex-basis: 400px;
+		box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		border-radius: 15px;
+		background-color: white;
+		border:4px solid black;
+		margin : auto;
+		width: 30%;
+	}
+
+	.main h3{
+		padding: 20px 20px 10px 20px;
+		font-size: 35px;
+	}
+
+	.main form{
+		padding: 20px;
+	}
+
+	.form-outer{
+		margin-bottom:20px;
+	}
+
+	.form-outer label{
+		display: block;
+		text-align: left;
+	        font-weight: bold;
+		margin-left: 35px;
+	}
+
+	.form-outer input, .form-outer textarea{
+        	width: 80%;
+		height: 35px;
+        	border: 1px solid #ccc;
+        	border-radius: 10px;
+		background-color: white;
+	}
+
+	.form-outer button{		
+		width: 80%;
+		background-color:#F50870FF;
+		color: white;
+		font-size: 20px;
+        	border-radius: 30px;
+        	padding: 10px 20px;            
+        	cursor: pointer;
+	}
+
+	#notification {
+		font-size: 20px;
+		font-weight: bold;
+		padding: 10px;
+		color: black;
+		background-color: #333;
+		width: 50%;
+		margin: 10px auto;
+		border-radius: 10px;
+		position: relative;
+	}
+
+
+
+        @media only screen and (max-width: 735px)
+{
+	.main{
+        	width: 80%;
+	}
+}
+
+
+    </style>
+</head>
+<body>
+  <div class="background-container">
+    <div class="dark-overlay"><img src="kappa.jpg" class="background-image"></div>
+  </div>
+
+    <header>
+	<img src="kappa.png" align="left" class="logo"></a>
+        <div class="menu-btn" onclick="toggleMenu()">&#9776;</div>
+        <nav>
+            <a href="\">Home</a>
+            <a href="Swap.html">Swap</a>
+            <a href="Airdrop.html">Airdrop</a>
+           <!-- <a href="#">NFT</a> -->
+            <a href="About.html">About</a>
+            <a href="Contact.html">Contact us</a>
+            <a href="Tokenomics.html">Tokenomics</a>
+        </nav>
+        <button id="connect-wallet"><b>Connect Wallet</b></button>
+        <button id="disconnect-wallet" style="display: none;"><b>Disconnect Wallet</b></button>
+    </header>
+
+<br>
+
+<div id="notification" style="background-color: transparent;"></div>
+
+<br>
+
+<div class="main">
+	<h3>Contact Us</h3>
+
+<form method="post" id="form">
+
+<div id="res" style="color:green; font-size:14px;"></div>
+
+	<div class="form-outer">
+	<label>Date & Time</label>
+	<input type="text" id="currentTimeInput" name="datetime" required readonly>
+	</div>
+
+	<div class="form-outer">
+	<label>Wallet Address</label>
+	<input type="text" id="walletAddress" name="wallet" required readonly>
+	</div>
+
+	<div class="form-outer">
+	<label>Email</label>
+	<input type="email" name="email" id="contactEmail" required>
+	</div>
+
+	<div class="form-outer">
+	<label>Query</label>
+	<textarea type="text" name="query" id="query" required></textarea>
+	</div>
+
+	<div class="form-outer">
+	<button name="btn">Submit</button>
+	</div>
+
+       
+</form>
+</div>
+     
+<br>
+    <footer>
+<table id="t4">
+<tr>
+	<td id="td4-1"><img class="bottom-logo" src="kappa.png"></td>
+	<td>Token Price: $1.32</td>
+</tr>
+<tr>
+	<td id="td4-2"><img class="bottom-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png" style="width:50px;"></td>
+	<td><button id="Metamask-button" ><b>Add to Metamask</b></button></td>
+</tr>
+</table>
+
+        <div class="right-section"><b>
+<ul>
+    <li>        <a class="page-link" href="\">Home</a>
+    <li>        <a class="page-link" href="Swap.html">Swap</a>
+    <li>        <a class="page-link" href="Airdrop.html">Airdrop</a>
+    <li>        <a class="page-link" href="About.html">About</a>
+    <li>        <a class="page-link" href="Contact.html">Contact</a> 
+    <li>        <a class="page-link" href="Tokenomics.html">Tokenomics</a>
+</ul>
+        </div></b>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+<script>
+
+//--------Date & Time-------------
+window.onload = function () {
+      updateCurrentTime();
+    };
+
+    function updateCurrentTime() {
+      const currentDateTimeInput = document.getElementById("currentTimeInput");
+      const currentDateTime = new Date();
+       const options = { 
+        year: 'numeric', 
+        month: 'numeric', 
+        day: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        second: 'numeric', 
+        hour12: true, // Use 12-hour format with AM/PM
+        timeZoneName: 'short' // Include the UTC time zone abbreviation
+      };
+      const currentDateTimeString = currentDateTime.toLocaleString('en-US', options);
+      currentDateTimeInput.value = currentDateTimeString;   
+    }
+
+    setInterval(updateCurrentTime, 1000);
+
+//---------Wallet Connection--------------
+
+	const connectWalletBtn = document.getElementById("connect-wallet");
+        const walletAddressInput = document.getElementById("walletAddress");
+
+        connectWalletBtn.addEventListener("click", async () => {
+            if (typeof ethereum !== "undefined") {
+                try {
+                    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+                    if (accounts.length > 0) {
+                        walletAddressInput.value = accounts[0];
+
+                document.getElementById('disconnect-wallet').style.display = 'inline';
+                document.getElementById('connect-wallet').style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        });
+
+	document.getElementById('disconnect-wallet').addEventListener('click', () => {
+            ethereum.request('eth_requestAccounts').then(() => {
+                document.getElementById("walletAddress").value = '';
+                document.getElementById('connect-wallet').style.display = 'inline';
+                document.getElementById('disconnect-wallet').style.display = 'none';
+            });
+        });
+
+//-------Submit Query----------
+
+let url = "https://script.google.com/macros/s/AKfycbzAo4kS_h2MuHBZLwHk85VC6xn_DazokNzogweAGf0QKM4qiIW4XNP3x6ZsC3Qu8kyoKw/exec";
+let form = document.querySelector('#form');        
+form.addEventListener("submit",(e)=>{
+	e.target.btn.innerHTML="Submitting...";
+	let d = new FormData(form);
+	fetch(url,{
+		method: "POST",
+		body: d
+	}).then((res)=>res.text())
+	.then((finalRes)=>{
+	e.target.btn.innerHTML="Submit";
+
+            const notification = document.getElementById('notification');
+            notification.style.backgroundColor = "#39e75f";
+
+
+	notification.innerHTML=finalRes;
+	form.reset();
+	setTimeout(() => {
+                notification.style.backgroundColor = 'transparent';
+                notification.textContent = '';
+            }, 3000);
+
+	})
+	e.preventDefault();
+})
+
+//------------Menu--------------
+
+function toggleMenu() {
+            var nav = document.querySelector('nav');
+            nav.classList.toggle('show');
+        }
+
+//-----------Notification------------
+function flashNotification(message, color) {
+            const notification = document.getElementById('notification');
+            notification.style.backgroundColor = color;
+            notification.textContent = message;
+            setTimeout(() => {
+                notification.style.backgroundColor = 'transparent';
+                notification.textContent = '';
+            }, 3000);
+        }
+</script>
+</body>
+</html>

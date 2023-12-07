@@ -1,0 +1,138 @@
+	body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .claim-button, .accumulate-button {
+            padding: 10px 20px;
+            background-color: #F50870FF;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size:90%;
+        }
+
+	#t1
+	{
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	    margin-left:auto;
+	    margin-right:auto;
+            background-color: #333;
+            width: 600px;
+            height: 100px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px;
+   	    font-weight:bold;
+	}
+
+
+	#t2
+	{
+	    margin-left:auto;
+	    margin-right:auto;
+            background-color: #333;
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            text-align: center;
+            border-radius: 20px;
+   	    font-weight:bold;
+	}
+
+	#t3
+	{
+		padding:10px;
+		margin-left:auto;
+		margin-right:auto;
+		background-color: #333;
+		width: 600px;
+		height: 150px;
+		color: #fff;
+		text-align: center;
+		border-radius: 20px;
+		font-weight:bold;
+	}
+
+	#activeDot {
+		width: 15px;
+		height: 15px;
+		background-color: red;
+		border-radius: 50%;
+		float: left;
+	}
+
+	#referCode
+	{
+		width: 80%;
+		height: 30%;
+		border-radius: 10px;
+		padding:10px;
+	}
+
+	#copyButton {
+		padding: 5px 10px;
+		cursor: pointer;
+		background-color: #3498db;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		height: 35px;
+	}
+
+
+	#td3-1{
+		height:20px;
+	}
+
+	#td3-2{
+		height:1px;
+	}
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .popup {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .status {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .processing {
+            animation: spin 2s linear infinite;
+        }
+
+        @media only screen and (max-width: 850px)
+{
+	
+	#t1{
+		max-width: 92%;
+		font-size:13px;
+	}
+
+	#td1-1, #td1-2
+	{
+		width:90px;
+	}
+
+	#t3{
+		width:80%;
+	}
+}
