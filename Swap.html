@@ -440,7 +440,7 @@ document.getElementById('sell-curse').addEventListener('click', async () => {
 	const amountBNB = parseInt(document.getElementById('bnb-swap-amount').value);
 
     try {
-        const amountWei = web3.utils.toWei(amountBNB, 'ether');
+        const amountWei = web3.utils.toWei(amountBNB.toString(), 'ether');
         const gas = 5000000;
         const transaction = await contract.methods.sellTokens(amountWei).send({ from: userAddress, gas });
 
