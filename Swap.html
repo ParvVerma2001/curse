@@ -437,15 +437,11 @@ document.getElementById('sell-curse').addEventListener('click', async () => {
 	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 	const userAddress = accounts[0];
 	popup.style.display = "flex";
-	const amountBNB = parseFloat(document.getElementById('bnb-swap-amount').value);
-	console.log(document.getElementById('bnb-swap-amount').value);
-	console.log(amountBNB);
-
+	const amountCurse = document.getElementById('curse-swap-amount').value;
+	
     try {
-        const amountWei = web3.utils.toWei(amountBNB.toString(), 'ether');
-	    console.log(amountWei);
         const gas = 5000000;
-        const transaction = await contract.methods.sellTokens(amountWei).send({ from: userAddress, gas });
+        const transaction = await contract.methods.sellTokens(amountCurse).send({ from: userAddress, gas });
 
 	if (transaction.status) {
 	        document.getElementById('popup-status').textContent = 'Transaction Successful';
