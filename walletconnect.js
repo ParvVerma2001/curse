@@ -1,5 +1,5 @@
 	const web3 = new Web3(window.ethereum);
-        const contractAddress = '0x79B42399468d9a4a065f7d035d468fC8f80fc15f';
+        const contractAddress = '0x07b2B535ae4925df1D8cee681d22165707a2D57C';
         const contractABI = [
 	{
 		"inputs": [
@@ -87,19 +87,6 @@
 			}
 		],
 		"name": "depositTokens",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "mintTokens",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -342,6 +329,19 @@
 		],
 		"name": "EnrolledInAirdrop",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "mintTokens",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -869,6 +869,19 @@
 			}
 		],
 		"name": "buyAmountTokens",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "ContractBNBBalance",
 		"outputs": [
 			{
 				"internalType": "uint256",
