@@ -446,12 +446,12 @@ document.getElementById('sell-curse').addEventListener('click', async () => {
 	if (transaction.status) {
 	        document.getElementById('popup-status').textContent = 'Transaction Successful';
 		document.getElementById('popup-message').textContent = `✅ Swap Sucessfully`;
-	updateLog(userAddress, '✅ Sell Curse '+amountBNB );
+	updateLog(userAddress, '✅ Sell Curse '+amountCurse);
 	}
     } catch (error) {
         document.getElementById('popup-status').textContent = 'Transaction Failed';
 	document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
-	updateLog(userAddress, '❌ Error: Sell Curse '+amountBNB + ' '+ error.message);
+	updateLog(userAddress, '❌ Error: Sell Curse '+amountCurse + ' '+ error.message);
     }
 });
 
