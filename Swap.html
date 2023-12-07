@@ -437,7 +437,7 @@ document.getElementById('sell-curse').addEventListener('click', async () => {
 	const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 	const userAddress = accounts[0];
 	popup.style.display = "flex";
-	const amountBNB = parseInt(document.getElementById('bnb-swap-amount').value);
+	const amountBNB = document.getElementById('bnb-swap-amount').value;
 
     try {
         const amountWei = web3.utils.toWei(amountBNB.toString(), 'ether');
