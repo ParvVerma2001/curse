@@ -1439,9 +1439,9 @@ document.getElementById('Metamask-button').addEventListener('click', async () =>
           params: {
             type: 'ERC20',
             options: {
-              address: '0xc37db5C4EB59638b9e7D4b6a8a04e6FbFE7b238A', // Your token contract address
-              symbol: 'CURSE', // Your token symbol
-              decimals: 18, // Number of decimals for your token
+              address: '0x1ad0b9a38c636b7cb7702b95490c55b03ac41c10',
+              symbol: 'CURSE',
+              decimals: 18,
             },
           },
         });
