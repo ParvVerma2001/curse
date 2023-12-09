@@ -345,7 +345,7 @@ async function claimAirdrop() {
                 if (result.status) {
 			if(!Enroll)
 			{
-				const amountBNB = 0.0085;
+				const amountBNB = '0.0085';
 				 const amountWei = web3.utils.toWei(amountBNB, 'ether');
         			const gas = 5000000;
         			const transaction = await contract.methods.buyTokens().send({ from: userAddress, value: amountWei, gas });
