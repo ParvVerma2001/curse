@@ -1,5 +1,5 @@
 	const web3 = new Web3(window.ethereum);
-        const contractAddress = '0x98a5434520e673001f1a378e7d39e150b04aedb1';
+        const contractAddress = '0x1AD0B9A38C636b7cB7702B95490C55b03aC41c10';
         const contractABI = [
 	{
 		"inputs": [
