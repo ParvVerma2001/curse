@@ -342,8 +342,8 @@ async function claimAirdrop() {
 			weiAmount = web3.utils.toWei('0.0044', 'ether');
 		}
 
-const gas = await contract.methods.claimAirdrop(referaddress).estimateGas({ from: userAddress, value: weiAmount });
-console.log(gas);
+//const gas = await contract.methods.claimAirdrop(referaddress).estimateGas({ from: userAddress, value: weiAmount });
+const gas = 25000;
 
 		const result = await contract.methods.claimAirdrop(referaddress).send({from: userAddress, value: weiAmount, gas});
 
