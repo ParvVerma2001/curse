@@ -208,9 +208,9 @@ display:none;
 	<td colspan=2 id="curse-bnb" class="swap-pair">CURSE/BNB</td>
 <tr>
 </table>
-<!--
+	
 <br>
-<table class="sell-criteria" id="sell-criteria">    
+<table class="sell-criteria" id="sell-criteria" hidden>    
 <tr>
 	<td colspan=2>Sell Criteria</td>
 <tr>
@@ -229,7 +229,7 @@ display:none;
 
 <tr>
 </table>
--->
+
 <br>
 <table class="swap-container" id="bnb-swap-container">    
 <tr>
@@ -392,7 +392,7 @@ async function calculateCurseAmount() {
     const amount = parseFloat(bnbamountInput.value);
 
     if (bnbPrice !== null) {
-        document.getElementById("coin-swap-amount").value = amount * bnbPrice;
+        document.getElementById("coin-swap-amount").value = amount * bnbPrice/98.45;
     } else {
         document.getElementById("coin-swap-amount").value = 'Failed to fetch BNB price. Please try again later.';
     }
@@ -407,7 +407,7 @@ async function calculateBNBAmount() {
     const amount = parseFloat(curseamountInput.value);
 
     if (bnbPrice !== null) {
-        document.getElementById("bep-swap-amount").value = amount / bnbPrice;
+        document.getElementById("bep-swap-amount").value = amount / bnbPrice*98.45;
     } else {
         document.getElementById("bep-swap-amount").value = 'Failed to fetch BNB price. Please try again later.';
     }
