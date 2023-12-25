@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', async () => {
-document.getElementById('token-price').innerText = '1.431';
+document.getElementById('token-price').innerText = '98.452';
 });
