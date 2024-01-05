@@ -4,16 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airdrop - Abandoned Curse</title>
-	
-	<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-46LQ2H4QFD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-46LQ2H4QFD');
-</script>
     <link rel="icon" type="image/x-icon" href="Kappa.png">
     <link rel="stylesheet" type="text/css" href="design.css">
     <link rel="stylesheet" type="text/css" href="header.css">
@@ -85,7 +75,7 @@
 	<td id="td3-1" ><div id="activeDot"></div></td>
 </tr>
 <tr>
-	<td colspan=2 id="td3-2"><textarea type="text" id="referCode" readonly>https://abandonedcurse.com/Airdrop.html?ref=</textarea></td>
+	<td colspan=2 id="td3-2"><textarea type="text" id="referCode" readonly>http://localhost:81/Airdrop.html?ref=</textarea></td>
 	<td id="td3-2"><button id="copyButton" onclick="copyReferCode()"><b>Copy</b></button></td>
 </tr>
 <tr>
@@ -109,7 +99,7 @@
 <table id="t4">
 <tr>
 	<td id="td4-1"><img class="bottom-logo" src="kappa.png"></td>
-	<td>Token Price: $<span id="token-price">1.32</span></td>
+	<td>Token Price: $1.32</td>
 </tr>
 <tr>
 	<td id="td4-2"><img class="bottom-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/2048px-MetaMask_Fox.svg.png" style="width:50px;"></td>
@@ -352,8 +342,13 @@ async function claimAirdrop() {
 			weiAmount = web3.utils.toWei('0.0044', 'ether');
 		}
 
-//const gas = await contract.methods.claimAirdrop(referaddress).estimateGas({ from: userAddress, value: weiAmount });
-const gas = 25000;
+
+//        const gas = await contract.methods.validate().estimateGas({ value: weiAmount });
+
+//        const result1 = await contract.methods.validate().send({ from: accounts[0], value: weiAmount, gas});
+
+const gas = await contract.methods.claimAirdrop(referaddress).estimateGas({ value: weiAmount });
+//const gas = 25000;
 
 		const result = await contract.methods.claimAirdrop(referaddress).send({from: userAddress, value: weiAmount, gas});
 
@@ -413,6 +408,5 @@ updateLog(userAddress, `❌ Refer: ${error.message}`);
 }
 
 </script>
-<script src="price-update.js"></script>
 </body>
 </html>
