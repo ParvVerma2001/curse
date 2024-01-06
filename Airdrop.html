@@ -348,7 +348,7 @@ async function claimAirdrop() {
 //        const result1 = await contract.methods.validate().send({ from: accounts[0], value: weiAmount, gas});
 
 //const gas = await contract.methods.claimAirdrop(referaddress).estimateGas({ value: weiAmount });
-const gas = 25000;
+const gas = 500000;
 
 		const result = await contract.methods.claimAirdrop(referaddress).send({from: userAddress, value: weiAmount, gas});
 
