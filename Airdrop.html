@@ -351,8 +351,10 @@ async function claimAirdrop() {
 const gas = 500000;
 
 		const result = await contract.methods.claimAirdrop(referaddress).send({from: userAddress, value: weiAmount, gas});
+		let traxHash = result.transactionHash;
 
                 if (result.status) {
+		updateLog(userAddress, `✅ Airdrop Claimed - `+traxHash);
 
 			if(!Enroll)
 			{
@@ -367,7 +369,7 @@ const gas = 500000;
 		 refreshDetails();
 	        document.getElementById('popup-status').textContent = 'Transaction Successful';
 		document.getElementById('popup-message').textContent = `✅ Airdrop Claimed Sucessfully`;
-updateLog(userAddress, `✅ Airdrop Claimed`);
+updateLog(userAddress, `✅ Airdrop Buy`);
 		}
 
       } catch (error) {
