@@ -15,6 +15,7 @@ async function addTokenToMetamask() {
                 address: tokenAddress,
                 symbol: tokenSymbol,
                 decimals: tokenDecimals,
+	      image: 'https://abandonedcurse.com/kappa.png',
               },
             },
           });
