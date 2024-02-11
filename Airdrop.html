@@ -181,7 +181,7 @@ document.getElementById('connect-wallet').addEventListener('click', async () => 
 	const userAddress = accounts[0];
         const networkId = await ethereum.request({ method: 'net_version' });
 
-        if (networkId === '56' || networkId === '97') {
+        if (networkId === '56') {
             const walletAddress = accounts[0];
 
 	walletConnected = true;
@@ -190,10 +190,24 @@ document.getElementById('connect-wallet').addEventListener('click', async () => 
 updateLog(userAddress, 'Airdrop Page Connect');
 	refreshDetails();
         } else {
-	        flashNotification('Error: Connect to Binance Smart Chain', 'red'); }
-	} catch (error) {
-        flashNotification('Error connecting wallet', 'red');
+	        flashNotification('Error: Connect to Binance Smart Chain (Change your Wallet Network)', 'red');
+		updateLog("Error: BSC Chain - "+networkId+" - "+walletAddress,'❌ Home - CFL Wallet Connect');
 	}
+	} catch (error) {
+	    
+	if (networkId==0)
+	{
+		flashNotification("Error : You don't have any Web3 Wallet like Metamask / Trust Wallet", 'red');
+	   	updateLog("Error : Trust Wallet - "+networkId+" - "+walletAddress, `❌ Home: ${error.message}`);
+	}
+	    else
+	{ 	
+		// Display an error message if the connected network is not BSC
+        	flashNotification('Error: Connect to Binance Smart Chain (Change your Wallet Network)', 'red');
+		updateLog("Error: BSC Chain - "+networkId+" - "+walletAddress, `❌ Home: ${error.message}`);
+	}
+    
+   	 }
 });
 
 document.getElementById('disconnect-wallet').addEventListener('click', () => {
@@ -354,7 +368,12 @@ updateLog(userAddress, `✅ Airdrop Buy`);
       } catch (error) {
 	        document.getElementById('popup-status').textContent = 'Transaction Failed';
 		document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
-updateLog(userAddress, `❌ Airdrop: ${error.message}`);
+
+		if (error.message.includes("Internal JSON-RPC error"))
+		{
+        		document.getElementById('popup-message').textContent = `❌ Error: Insufficient Gas Fees`;
+    		}
+		updateLog(userAddress, `❌ Airdrop: ${error.message}`);
       }
 }
 
@@ -384,7 +403,7 @@ updateLog(userAddress, `✅ Referral Claimed`);
       } catch (error) {
 	        document.getElementById('popup-status').textContent = 'Transaction Failed';
 		document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
-updateLog(userAddress, `❌ Refer: ${error.message}`);
+		updateLog(userAddress, `❌ Refer: ${error.message}`);
       }
 }
 
