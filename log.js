@@ -2,7 +2,6 @@ async function updateLog(_walletAddress, _Page)
 {
 
     const info = await metadata();
-    console.log(info);
     const walletAddress = _walletAddress;
     const currentPage = _Page + ' : ' + info;
     const postData = {
